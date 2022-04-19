@@ -25,18 +25,20 @@ struct ContentView: View {
                     } label: {
                         Text(item.timestamp!, formatter: itemFormatter)
                     }
+                    .navigationTitle("Title")
                 }
                 .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
                 ToolbarItem {
                     Button(action: addItem) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+                
             }
             Text("Select an item")
         }
