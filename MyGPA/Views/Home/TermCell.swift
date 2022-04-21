@@ -1,5 +1,5 @@
 //
-//  SemesterCell.swift
+//  TermCell.swift
 //  MyGPA
 //
 //  Created by Sae Pasomba on 18/04/22.
@@ -7,13 +7,14 @@
 
 import SwiftUI
 
-struct SemesterCell: View {
+struct TermCell: View {
     var body: some View {
         VStack {
             Text("Semester 1")
-                .font(.title2)
+                .font(.title)
                 .fontWeight(.heavy)
                 .padding(.top)
+            
             HStack {
                 VStack {
                     Text("Total Credits")
@@ -39,19 +40,21 @@ struct SemesterCell: View {
             }
             .padding()
             
+            
+            
         }
         .foregroundColor(Color("YellowLabel"))
+        //        .background(Color.clear)
         .overlay(
             RoundedRectangle(cornerRadius: 25)
                 .stroke(Color("YellowLabel"))
         )
-        .padding()
     }
 }
 
 struct SemesterCell_Previews: PreviewProvider {
     static var previews: some View {
-        SemesterCell()
-        SemesterCell().previewLayout(.sizeThatFits)
+        TermCell()
+        TermCell().previewLayout(.sizeThatFits)
     }
 }

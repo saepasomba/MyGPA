@@ -9,12 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
-    var semesterList: [Semester] = [
-        Semester(term: 1),
-        Semester(term: 2),
-        Semester(term: 3),
-        Semester(term: 4),
-        Semester(term: 5),
+    var termList: [Term] = [
+        Term(term: 1),
+        Term(term: 2),
+        Term(term: 3),
+        Term(term: 4),
+        Term(term: 5),
     ]
     
     var body: some View {
@@ -23,24 +23,27 @@ struct HomeView: View {
                 ZStack {
                     Color("Background")
                         .ignoresSafeArea()
-                    List(semesterList) { semester in
+                    List(termList) { term in
                         ZStack {
-                            SemesterCell()
+                            TermCell()
+                                .padding()
                             NavigationLink {
-                                Text("Hello")
+                                TermDetailView()
+//                                    .navigationBarHidden(false)
+//                                    .navigationBarBackButtonHidden(true)
                             } label: {
                                 EmptyView()
                             }
                             .opacity(0)
                         }
                         .listRowSeparator(.hidden)
-                        .background(.clear)
                         .listRowInsets(EdgeInsets())
                         .listRowBackground(Color.clear)
                     }
                     .listStyle(.plain)
                     .safeAreaInset(edge: .top) {
                         SummaryTable()
+                            .shadow(radius: 10)
                             .padding(.vertical, 10)
                             .padding(.horizontal, 50.0)
                     }
@@ -59,7 +62,7 @@ struct HomeView: View {
                         }
 
                     }
-                    .navigationTitle("MyGPA")
+//                    .navigationTitle("MyGPA")
                     .navigationBarHidden(true)
                 }
             }
@@ -69,8 +72,10 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
-            .previewDevice("iPhone 11")
+        Group {
+            HomeView()
+                .previewDevice("iPhone 11")
+        }
         HomeView()
             .previewDevice("iPhone 13 Pro Max")
     }

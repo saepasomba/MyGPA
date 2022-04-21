@@ -1,5 +1,5 @@
 //
-//  Semester.swift
+//  Term.swift
 //  MyGPA
 //
 //  Created by Sae Pasomba on 18/04/22.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Semester: Identifiable {
+class Term: Identifiable {
     var id: Int? {
         return term
     }

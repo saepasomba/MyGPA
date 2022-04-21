@@ -27,9 +27,9 @@ struct SummaryTable: View {
         }
         .padding()
         .background(Color("YellowLabel"))
+        .foregroundColor(Color("Background"))
         .cornerRadius(25)
     }
-    
 }
 
 struct SummaryTable_Previews: PreviewProvider {

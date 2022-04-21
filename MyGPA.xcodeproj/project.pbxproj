@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4397DB0A280DCD6E0019A4BA /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397DB09280DCD6E0019A4BA /* Semester.swift */; };
+		4397DB0A280DCD6E0019A4BA /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397DB09280DCD6E0019A4BA /* Term.swift */; };
+		4397DB0E280F2B070019A4BA /* TermDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397DB0D280F2B070019A4BA /* TermDetailView.swift */; };
 		43C62822280D75E4009D1B2F /* MyGPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62821280D75E4009D1B2F /* MyGPAApp.swift */; };
 		43C62824280D75E4009D1B2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62823280D75E4009D1B2F /* ContentView.swift */; };
 		43C62826280D75E6009D1B2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43C62825280D75E6009D1B2F /* Assets.xcassets */; };
@@ -15,12 +16,14 @@
 		43C6282B280D75E6009D1B2F /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C6282A280D75E6009D1B2F /* Persistence.swift */; };
 		43C6282E280D75E6009D1B2F /* MyGPA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43C6282C280D75E6009D1B2F /* MyGPA.xcdatamodeld */; };
 		43C62835280D7844009D1B2F /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62834280D7844009D1B2F /* HomeView.swift */; };
-		43C62838280D79B2009D1B2F /* SemesterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62837280D79B2009D1B2F /* SemesterCell.swift */; };
+		43C62838280D79B2009D1B2F /* TermCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62837280D79B2009D1B2F /* TermCell.swift */; };
 		43C6283A280D88CE009D1B2F /* SummaryTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62839280D88CD009D1B2F /* SummaryTable.swift */; };
+		43DE3568281119D40030F268 /* ClassCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43DE3567281119D40030F268 /* ClassCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4397DB09280DCD6E0019A4BA /* Semester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
+		4397DB09280DCD6E0019A4BA /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
+		4397DB0D280F2B070019A4BA /* TermDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailView.swift; sourceTree = "<group>"; };
 		43C6281E280D75E4009D1B2F /* MyGPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C62821280D75E4009D1B2F /* MyGPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGPAApp.swift; sourceTree = "<group>"; };
 		43C62823280D75E4009D1B2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,8 +32,9 @@
 		43C6282A280D75E6009D1B2F /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		43C6282D280D75E6009D1B2F /* MyGPA.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MyGPA.xcdatamodel; sourceTree = "<group>"; };
 		43C62834280D7844009D1B2F /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		43C62837280D79B2009D1B2F /* SemesterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SemesterCell.swift; sourceTree = "<group>"; };
+		43C62837280D79B2009D1B2F /* TermCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermCell.swift; sourceTree = "<group>"; };
 		43C62839280D88CD009D1B2F /* SummaryTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTable.swift; sourceTree = "<group>"; };
+		43DE3567281119D40030F268 /* ClassCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,9 +51,28 @@
 		4397DB08280DCD600019A4BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4397DB09280DCD6E0019A4BA /* Semester.swift */,
+				4397DB09280DCD6E0019A4BA /* Term.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4397DB0B280F27520019A4BA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				43C62834280D7844009D1B2F /* HomeView.swift */,
+				43C62839280D88CD009D1B2F /* SummaryTable.swift */,
+				43C62837280D79B2009D1B2F /* TermCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4397DB0C280F27630019A4BA /* TermDetail */ = {
+			isa = PBXGroup;
+			children = (
+				4397DB0D280F2B070019A4BA /* TermDetailView.swift */,
+				43DE3567281119D40030F268 /* ClassCell.swift */,
+			);
+			path = TermDetail;
 			sourceTree = "<group>";
 		};
 		43C62815280D75E4009D1B2F = {
@@ -94,9 +117,8 @@
 		43C62836280D7863009D1B2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				43C62834280D7844009D1B2F /* HomeView.swift */,
-				43C62839280D88CD009D1B2F /* SummaryTable.swift */,
-				43C62837280D79B2009D1B2F /* SemesterCell.swift */,
+				4397DB0C280F27630019A4BA /* TermDetail */,
+				4397DB0B280F27520019A4BA /* Home */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,13 +194,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				43C6282E280D75E6009D1B2F /* MyGPA.xcdatamodeld in Sources */,
-				4397DB0A280DCD6E0019A4BA /* Semester.swift in Sources */,
+				4397DB0A280DCD6E0019A4BA /* Term.swift in Sources */,
 				43C6282B280D75E6009D1B2F /* Persistence.swift in Sources */,
+				4397DB0E280F2B070019A4BA /* TermDetailView.swift in Sources */,
+				43DE3568281119D40030F268 /* ClassCell.swift in Sources */,
 				43C6283A280D88CE009D1B2F /* SummaryTable.swift in Sources */,
 				43C62824280D75E4009D1B2F /* ContentView.swift in Sources */,
 				43C62835280D7844009D1B2F /* HomeView.swift in Sources */,
 				43C62822280D75E4009D1B2F /* MyGPAApp.swift in Sources */,
-				43C62838280D79B2009D1B2F /* SemesterCell.swift in Sources */,
+				43C62838280D79B2009D1B2F /* TermCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
