@@ -18,7 +18,6 @@ struct HomeView: View {
     ]
     
     var body: some View {
-        VStack {
             NavigationView {
                 ZStack {
                     Color("Background")
@@ -52,14 +51,11 @@ struct HomeView: View {
                             print("Button pressed")
                         } label: {
                             Text("Tambah Semester")
-                                .foregroundColor(.white)
-                                .padding()
-                                .background {
-                                    RoundedRectangle(cornerRadius: 25)
-                                        .fill(Color.blue)
-                                        .shadow(color: .black, radius: 5)
-                                }
                         }
+                        .foregroundColor(.white)
+                        .padding()
+                        .padding(.horizontal)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25))
 
                     }
 //                    .navigationTitle("MyGPA")
@@ -67,7 +63,6 @@ struct HomeView: View {
                 }
             }
         }
-    }
 }
 
 struct HomeView_Previews: PreviewProvider {
@@ -76,7 +71,5 @@ struct HomeView_Previews: PreviewProvider {
             HomeView()
                 .previewDevice("iPhone 11")
         }
-        HomeView()
-            .previewDevice("iPhone 13 Pro Max")
     }
 }

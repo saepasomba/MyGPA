@@ -13,7 +13,6 @@ struct ClassCell: View {
             Group {
                 Text("Dasar-Dasar Pemrograman 1")
                     .fontWeight(.bold)
-                    .padding(.leading)
                     .frame(maxWidth: 200, alignment: .center)
                 Spacer()
                 Text("4 Credits")
