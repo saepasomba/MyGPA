@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ClassTaken" representedClassName=".ClassTaken" syncable="YES" codeGenerationType="class">
+        <attribute name="credits" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="grade" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="parentTerm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Term" inverseName="classes" inverseEntity="Term"/>
+    </entity>
+    <entity name="Term" representedClassName=".Term" syncable="YES" codeGenerationType="class">
+        <attribute name="classTaken" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="gpa" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="term" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalCredit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="classes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ClassTaken" inverseName="parentTerm" inverseEntity="ClassTaken"/>
+    </entity>
+    <elements>
+        <element name="ClassTaken" positionX="-63" positionY="0" width="128" height="89"/>
+        <element name="Term" positionX="-278.47509765625" positionY="-7.781494140625" width="128" height="104"/>
+    </elements>
+</model>
