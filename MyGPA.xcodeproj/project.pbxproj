@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		433994EB2813CEE000902233 /* AddModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433994EA2813CEE000902233 /* AddModalView.swift */; };
-		4397DB0A280DCD6E0019A4BA /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397DB09280DCD6E0019A4BA /* Term.swift */; };
 		4397DB0E280F2B070019A4BA /* TermDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397DB0D280F2B070019A4BA /* TermDetailView.swift */; };
 		43C62822280D75E4009D1B2F /* MyGPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62821280D75E4009D1B2F /* MyGPAApp.swift */; };
 		43C62824280D75E4009D1B2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62823280D75E4009D1B2F /* ContentView.swift */; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		433994EA2813CEE000902233 /* AddModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModalView.swift; sourceTree = "<group>"; };
-		4397DB09280DCD6E0019A4BA /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
 		4397DB0D280F2B070019A4BA /* TermDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailView.swift; sourceTree = "<group>"; };
 		43C6281E280D75E4009D1B2F /* MyGPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C62821280D75E4009D1B2F /* MyGPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGPAApp.swift; sourceTree = "<group>"; };
@@ -53,7 +51,7 @@
 		4397DB08280DCD600019A4BA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4397DB09280DCD6E0019A4BA /* Term.swift */,
+				43C6282C280D75E6009D1B2F /* MyGPA.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -97,13 +95,12 @@
 		43C62820280D75E4009D1B2F /* MyGPA */ = {
 			isa = PBXGroup;
 			children = (
-				4397DB08280DCD600019A4BA /* Models */,
 				43C62821280D75E4009D1B2F /* MyGPAApp.swift */,
 				43C62823280D75E4009D1B2F /* ContentView.swift */,
+				4397DB08280DCD600019A4BA /* Models */,
 				43C62836280D7863009D1B2F /* Views */,
 				43C62825280D75E6009D1B2F /* Assets.xcassets */,
 				43C6282A280D75E6009D1B2F /* Persistence.swift */,
-				43C6282C280D75E6009D1B2F /* MyGPA.xcdatamodeld */,
 				43C62827280D75E6009D1B2F /* Preview Content */,
 			);
 			path = MyGPA;
@@ -197,7 +194,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				43C6282E280D75E6009D1B2F /* MyGPA.xcdatamodeld in Sources */,
-				4397DB0A280DCD6E0019A4BA /* Term.swift in Sources */,
 				43C6282B280D75E6009D1B2F /* Persistence.swift in Sources */,
 				4397DB0E280F2B070019A4BA /* TermDetailView.swift in Sources */,
 				43DE3568281119D40030F268 /* ClassCell.swift in Sources */,

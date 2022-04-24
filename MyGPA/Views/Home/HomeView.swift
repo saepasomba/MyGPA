@@ -6,30 +6,27 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+
+    @FetchRequest(entity: Term.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Term.term, ascending: true)])
+//    private var terms = [Term]()
+    private var terms: FetchedResults<Term>
     
-    var termList: [Term] = [
-        Term(term: 1),
-        Term(term: 2),
-        Term(term: 3),
-        Term(term: 4),
-        Term(term: 5),
-    ]
     
     var body: some View {
             NavigationView {
                 ZStack {
                     Color("Background")
                         .ignoresSafeArea()
-                    List(termList) { term in
+                    List(terms) { term in
                         ZStack {
-                            TermCell()
+                            TermCell(term: term)
                                 .padding()
                             NavigationLink {
                                 TermDetailView()
-//                                    .navigationBarHidden(false)
-//                                    .navigationBarBackButtonHidden(true)
                             } label: {
                                 EmptyView()
                             }
@@ -48,7 +45,7 @@ struct HomeView: View {
                     }
                     .safeAreaInset(edge: .bottom) {
                         Button {
-                            print("Button pressed")
+                            addItem()
                         } label: {
                             Text("Tambah Semester")
                         }
@@ -63,6 +60,27 @@ struct HomeView: View {
                 }
             }
         }
+    
+    private func addItem() {
+        withAnimation {
+            var newTerm = Term(context: viewContext)
+            if terms.isEmpty {
+                newTerm.term = 1
+            } else {
+                newTerm.term = Int64(terms.endIndex + 1)
+            }
+            print(newTerm.term)
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+            
+        }
+    }
 }
 
 struct HomeView_Previews: PreviewProvider {

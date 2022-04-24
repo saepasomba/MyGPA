@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct TermCell: View {
+    var term: Term?
+    
     var body: some View {
         VStack {
-            Text("Semester 1")
+            Text("Semester \(term?.term ?? 1)")
                 .font(.title)
                 .fontWeight(.heavy)
                 .padding(.top)
@@ -18,21 +20,21 @@ struct TermCell: View {
             HStack {
                 VStack {
                     Text("Total Credits")
-                    Text("24")
+                    Text("\(term?.totalCredit ?? 0)")
                         .font(.title)
                         .fontWeight(.heavy)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 VStack {
                     Text("GPA")
-                    Text("3.6")
+                    Text("\(term?.gpa ?? 0.0)")
                         .font(.title)
                         .fontWeight(.heavy)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 VStack {
                     Text("Classes Taken")
-                    Text("6")
+                    Text("\(term?.classTaken ?? 0)")
                         .font(.title)
                         .fontWeight(.heavy)
                 }
