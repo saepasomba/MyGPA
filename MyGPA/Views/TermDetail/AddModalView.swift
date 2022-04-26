@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct AddModalView: View {
-//    @Binding var addModalIsShown: Bool
+    @Environment(\.managedObjectContext) private var viewContext
     
-    @State var input1: String = ""
-    @State var input2: String = ""
-    @State var input3: String = ""
+    let selectedTerm: Term?
+    
+    @Binding var isPresented: Bool
+    
+    @State var nameInput: String = ""
+    @State var creditsInput: String = ""
+    @State var gradeInput: String = ""
     var grades = ["A", "A-", "B+", "B", "B-", "C+", "C", "D", "E"]
     
     var body: some View {
@@ -24,16 +28,16 @@ struct AddModalView: View {
                         HStack {
                             Text("Name")
                                 .frame(width: 75, alignment: .leading)
-                            TextField("Class name", text: $input1)
+                            TextField("Class name", text: $nameInput)
                         }
                         
                         HStack {
                             Text("Credits")
                                 .frame(width: 75, alignment: .leading)
-                            TextField("Credits of the class", text: $input2)
+                            TextField("Credits of the class", text: $creditsInput)
                                 .keyboardType(.numberPad)
                         }
-                        Picker("Grade", selection: $input3) {
+                        Picker("Grade", selection: $gradeInput) {
                             ForEach(grades, id: \.self) {
                                 Text($0)
                             }
@@ -43,8 +47,8 @@ struct AddModalView: View {
                     HStack {
                         Spacer()
                         Button {
-                            print("\(input1) is added")
-        //                    self.addModalIsShown.toggle()
+                            addItem()
+                            isPresented.toggle()
                         } label: {
                             Text("Add")
                         }
@@ -56,12 +60,34 @@ struct AddModalView: View {
             }
         }
     }
-}
-
-
-struct AddModalView_Previews: PreviewProvider {
-    let termDetailView = TermDetailView()
-    static var previews: some View {
-        AddModalView()
+    
+    private func addItem() {
+        withAnimation {
+            let newClass = ClassTaken(context: viewContext)
+            newClass.name = nameInput
+            newClass.grade = gradeInput
+            newClass.credits = Int64(creditsInput)!
+            newClass.parentTerm = selectedTerm
+            
+            
+//            print(newClass.term)
+            do {
+                try viewContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+            
+        }
     }
 }
+
+
+//struct AddModalView_Previews: PreviewProvider {
+//    let termDetailView = TermDetailView()
+//    static var previews: some View {
+//        AddModalView()
+//    }
+//}

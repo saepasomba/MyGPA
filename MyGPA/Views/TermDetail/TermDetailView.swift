@@ -8,19 +8,21 @@
 import SwiftUI
 
 struct TermDetailView: View {
+    
     @Environment(\.managedObjectContext) private var viewContext
     @State var addModalIsShown: Bool = false
     
     let selectedTerm: Term?
-    var classList: FetchedResults<ClassTaken>
+    @FetchRequest var classList: FetchedResults<ClassTaken>
     
-    init(selectedTerm: Term) {
-        @FetchRequest(
+    init(selectedTerm: Term) {       
+        self._classList = FetchRequest<ClassTaken>(
             entity: ClassTaken.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \ClassTaken.name, ascending: true)],
-            predicate: NSPredicate(format: "parentTerm.term MATCHES %@", selectedTerm.term)
+            predicate: NSPredicate(format: "parentTerm.term == %@", NSNumber(value: selectedTerm.term))
         )
-        var classList: FetchedResults<ClassTaken>
+        
+        self.selectedTerm = selectedTerm
     }
     
     
@@ -67,13 +69,13 @@ struct TermDetailView: View {
         }
         .sheet(isPresented: $addModalIsShown) {
             //            AddModalView(addModalIsShown: self.$addModalIsShown)
-            AddModalView()
+            AddModalView(selectedTerm: selectedTerm, isPresented: $addModalIsShown)
         }
     }
 }
 
-struct TermDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        TermDetailView()
-    }
-}
+//struct TermDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TermDetailView()
+//    }
+//}

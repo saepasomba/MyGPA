@@ -12,7 +12,7 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(entity: Term.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Term.term, ascending: true)])
-//    private var terms = [Term]()
+    
     private var terms: FetchedResults<Term>
     
     
