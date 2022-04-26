@@ -25,8 +25,9 @@ struct HomeView: View {
                         ZStack {
                             TermCell(term: term)
                                 .padding()
+                                .transition(.slide)
                             NavigationLink {
-                                TermDetailView()
+                                TermDetailView(selectedTerm: term)
                             } label: {
                                 EmptyView()
                             }
@@ -55,6 +56,12 @@ struct HomeView: View {
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25))
 
                     }
+//                    .toolbar {
+//                        ToolbarItem(placement: .status) {
+//                            EditButton()
+//                        }
+//
+//                    }
 //                    .navigationTitle("MyGPA")
                     .navigationBarHidden(true)
                 }
@@ -63,7 +70,7 @@ struct HomeView: View {
     
     private func addItem() {
         withAnimation {
-            var newTerm = Term(context: viewContext)
+            let newTerm = Term(context: viewContext)
             if terms.isEmpty {
                 newTerm.term = 1
             } else {

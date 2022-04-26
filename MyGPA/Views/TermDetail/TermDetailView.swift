@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct TermDetailView: View {
-    
+    @Environment(\.managedObjectContext) private var viewContext
     @State var addModalIsShown: Bool = false
+    
+    let selectedTerm: Term?
+    var classList: FetchedResults<ClassTaken>
+    
+    init(selectedTerm: Term) {
+        @FetchRequest(
+            entity: ClassTaken.entity(),
+            sortDescriptors: [NSSortDescriptor(keyPath: \ClassTaken.name, ascending: true)],
+            predicate: NSPredicate(format: "parentTerm.term MATCHES %@", selectedTerm.term)
+        )
+        var classList: FetchedResults<ClassTaken>
+    }
+    
     
     var body: some View {
         VStack {
@@ -17,36 +30,19 @@ struct TermDetailView: View {
                 ZStack {
                     Color("Background")
                         .ignoresSafeArea()
-                    List {
-                        ClassCell()
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                        ClassCell()
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                        ClassCell()
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                        ClassCell()
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                        ClassCell()
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                        ClassCell()
-                            .listRowSeparator(.hidden)
-                            .listRowBackground(Color.clear)
-                        ClassCell()
+                    List(classList) { classItem in
+                        ClassCell(classItem: classItem)
                             .listRowSeparator(.hidden)
                             .listRowBackground(Color.clear)
                     }
                     .listStyle(.plain)
                     .safeAreaInset(edge: .top) {
-                        TermCell()
+                        TermCell(term: selectedTerm)
                             .background(
                                 .ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25)
                             )
                             .padding()
+                            .offset(y: -25)
                         
                     }
                     .listRowInsets(EdgeInsets())
@@ -70,7 +66,7 @@ struct TermDetailView: View {
             }
         }
         .sheet(isPresented: $addModalIsShown) {
-//            AddModalView(addModalIsShown: self.$addModalIsShown)
+            //            AddModalView(addModalIsShown: self.$addModalIsShown)
             AddModalView()
         }
     }

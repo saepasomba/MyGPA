@@ -27,7 +27,7 @@ struct TermCell: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 VStack {
                     Text("GPA")
-                    Text("\(term?.gpa ?? 0.0)")
+                    Text("\((term?.gpa ?? 0.0), specifier: "%.2f")")
                         .font(.title)
                         .fontWeight(.heavy)
                 }
@@ -46,7 +46,7 @@ struct TermCell: View {
             
         }
         .foregroundColor(Color("YellowLabel"))
-        //        .background(Color.clear)
+        .multilineTextAlignment(.center)
         .overlay(
             RoundedRectangle(cornerRadius: 25)
                 .stroke(Color("YellowLabel"))

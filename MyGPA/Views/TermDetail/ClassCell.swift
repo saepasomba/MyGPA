@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct ClassCell: View {
+    var classItem: ClassTaken?
+    
     var body: some View {
         HStack {
             Group {
-                Text("Dasar-Dasar Pemrograman 1")
+                Text("\(classItem?.name ?? "")")
                     .fontWeight(.bold)
                     .frame(maxWidth: 200, alignment: .center)
                 Spacer()
-                Text("4 Credits")
+                Text("\(classItem?.credits ?? 0) Credits")
                 Spacer()
-                Text("A")
+                Text("\(classItem?.grade ?? "Unknown")")
                     .padding(.trailing)
             }
         }

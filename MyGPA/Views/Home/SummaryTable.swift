@@ -25,6 +25,7 @@ struct SummaryTable: View {
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
+        .multilineTextAlignment(.center)
         .padding()
         .background(Color("YellowLabel"))
         .foregroundColor(Color("Background"))

@@ -40,12 +40,17 @@ struct AddModalView: View {
                         }
                     }
                     
-                    Button {
-                        print("\(input1) is added")
-    //                    self.addModalIsShown.toggle()
-                    } label: {
-                        Text("Add")
+                    HStack {
+                        Spacer()
+                        Button {
+                            print("\(input1) is added")
+        //                    self.addModalIsShown.toggle()
+                        } label: {
+                            Text("Add")
+                        }
+                        Spacer()
                     }
+                    
                 }
                 .navigationTitle("Add class")
             }
