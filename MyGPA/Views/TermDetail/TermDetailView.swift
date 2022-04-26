@@ -15,7 +15,7 @@ struct TermDetailView: View {
     let selectedTerm: Term?
     @FetchRequest var classList: FetchedResults<ClassTaken>
     
-    init(selectedTerm: Term) {       
+    init(selectedTerm: Term) {
         self._classList = FetchRequest<ClassTaken>(
             entity: ClassTaken.entity(),
             sortDescriptors: [NSSortDescriptor(keyPath: \ClassTaken.name, ascending: true)],
