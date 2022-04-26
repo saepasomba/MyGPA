@@ -39,7 +39,7 @@ struct TermDetailView: View {
                     }
                     .listStyle(.plain)
                     .safeAreaInset(edge: .top) {
-                        TermCell(term: selectedTerm)
+                        TermCell(term: selectedTerm!)
                             .background(
                                 .ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25)
                             )

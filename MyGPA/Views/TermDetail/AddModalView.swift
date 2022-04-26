@@ -69,8 +69,6 @@ struct AddModalView: View {
             newClass.credits = Int64(creditsInput)!
             newClass.parentTerm = selectedTerm
             
-            
-//            print(newClass.term)
             do {
                 try viewContext.save()
             } catch {

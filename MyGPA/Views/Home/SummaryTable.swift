@@ -75,7 +75,6 @@ struct SummaryTable: View {
         default:
             return 0.0
         }
-        
     }
 }
 
