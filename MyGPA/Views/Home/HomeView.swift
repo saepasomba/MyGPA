@@ -10,61 +10,77 @@ import CoreData
 
 struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(entity: Term.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Term.term, ascending: true)]) private var terms: FetchedResults<Term>
     
     
     var body: some View {
-            NavigationView {
-                ZStack {
-                    Color("Background")
-                        .ignoresSafeArea()
-                    List(terms) { term in
-                        ZStack {
-                            TermCell(term: term)
-                                .padding()
-                                .transition(.slide)
-                            NavigationLink {
-                                TermDetailView(selectedTerm: term)
-                            } label: {
-                                EmptyView()
-                            }
-                            .opacity(0)
+        NavigationView {
+            ZStack {
+                Color("Background")
+                    .ignoresSafeArea()
+                List(terms) { term in
+                    ZStack {
+                        TermCell(term: term)
+                            .padding()
+                            .transition(.slide)
+                        NavigationLink {
+                            TermDetailView(selectedTerm: term)
+                        } label: {
+                            EmptyView()
                         }
-                        .listRowSeparator(.hidden)
-                        .listRowInsets(EdgeInsets())
-                        .listRowBackground(Color.clear)
+                        .opacity(0)
                     }
-                    .listStyle(.plain)
-                    .safeAreaInset(edge: .top) {
-                        SummaryTable()
-                            .shadow(radius: 10)
-                            .padding(.vertical, 10)
-                            .padding(.horizontal, 50.0)
-                    }
-                    .safeAreaInset(edge: .bottom) {
+                    .listRowSeparator(.hidden)
+                    .listRowInsets(EdgeInsets())
+                    .listRowBackground(Color.clear)
+                }
+                .listStyle(.plain)
+                .safeAreaInset(edge: .top) {
+                    SummaryTable()
+                        .shadow(radius: 10)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 50.0)
+                }
+                .safeAreaInset(edge: .bottom) {
+                    
+                    HStack {
+                        Button {
+                            popLastSemester()
+                        } label: {
+                            Text("Pop last semester")
+                                .frame(maxWidth: 75)
+                        }
+                        .foregroundColor(.red)
+                        .padding()
+                        .padding(.horizontal)
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25))
+                        
+                        
                         Button {
                             addItem()
                         } label: {
                             Text("Tambah Semester")
+                                .frame(maxWidth: 75)
                         }
                         .foregroundColor(.white)
                         .padding()
                         .padding(.horizontal)
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 25))
-
                     }
-//                    .toolbar {
-//                        ToolbarItem(placement: .status) {
-//                            EditButton()
-//                        }
-//
-//                    }
-//                    .navigationTitle("MyGPA")
-                    .navigationBarHidden(true)
+                    
                 }
+                //                    .toolbar {
+                //                        ToolbarItem(placement: .status) {
+                //                            EditButton()
+                //                        }
+                //
+                //                    }
+                //                    .navigationTitle("MyGPA")
+                .navigationBarHidden(true)
             }
         }
+    }
     
     private func addItem() {
         withAnimation {
@@ -78,13 +94,29 @@ struct HomeView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
             
         }
+    }
+    
+    private func popLastSemester() {
+        withAnimation {
+            if let lastTerm = terms.last {
+                viewContext.delete(lastTerm)
+                do {
+                    try viewContext.save()
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
+            }
+        }
+    }
+    
+    private func updateSummary() {
+        
     }
 }
 
