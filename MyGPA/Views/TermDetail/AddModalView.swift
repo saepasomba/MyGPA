@@ -62,22 +62,31 @@ struct AddModalView: View {
     }
     
     private func addItem() {
-        withAnimation {
-            let newClass = ClassTaken(context: viewContext)
-            newClass.name = nameInput
-            newClass.grade = gradeInput
-            newClass.credits = Int64(creditsInput)!
-            newClass.parentTerm = selectedTerm
-            do {
-                try viewContext.save()
-            } catch {
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        if inputsAreValid() {
+            withAnimation {
+                let newClass = ClassTaken(context: viewContext)
+                newClass.name = nameInput
+                newClass.grade = gradeInput
+                newClass.credits = Int64(creditsInput)!
+                newClass.parentTerm = selectedTerm
+                do {
+                    try viewContext.save()
+                } catch {
+                    let nsError = error as NSError
+                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                }
+                
             }
-            
         }
     }
     
+    private func inputsAreValid() -> Bool {
+        let nameIsValid = (nameInput != "")
+        let creditsIsValid = (creditsInput != "") && (Int(creditsInput) != nil)
+        let gradeInputIsValid = (gradeInput != "")
+        
+        return (nameIsValid && creditsIsValid && gradeInputIsValid)
+    }
     
 }
 
