@@ -57,62 +57,12 @@ struct TermCell: View {
             
             
         }
-//        .onAppear(perform: updateTerm)
         .foregroundColor(Color("YellowLabel"))
         .multilineTextAlignment(.center)
         .overlay(
             RoundedRectangle(cornerRadius: 25)
                 .stroke(Color("YellowLabel"))
         )
-    }
-    
-//    private func updateTerm() {
-//        var totalPoints = 0.0
-//        var classTaken = 0
-//        var totalCredit = 0
-//        
-//        for classItem in classList {
-//            classTaken += 1
-//            totalCredit += Int(classItem.credits)
-//            totalPoints += (Double(classItem.credits) * gradeToPoint(classItem.grade ?? "F"))
-//        }
-//        term?.totalCredit = Int64(totalCredit)
-//        term?.classTaken = Int64(classTaken)
-//        let tempGPA = totalPoints / Double(totalCredit)
-//        print("TERM UPDATED! newGPA: \(tempGPA)")
-//        term?.gpa = tempGPA.isNaN ? 0.0 : tempGPA
-//        
-//        do {
-//            try viewContext.save()
-//        } catch {
-//            let nsError = error as NSError
-//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//        }
-//    }
-    
-    private func gradeToPoint(_ grade: String) -> Double {
-        switch grade {
-        case "A":
-            return 4.0
-        case "A-":
-            return 3.7
-        case "B+":
-            return 3.3
-        case "B":
-            return 3.0
-        case "B-":
-            return 2.7
-        case "C+":
-            return 2.3
-        case "C":
-            return 2.0
-        case "D":
-            return 1.0
-        case "F":
-            return 0.0
-        default:
-            return 0.0
-        }
     }
 }
 

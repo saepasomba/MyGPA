@@ -89,7 +89,6 @@ struct HomeView: View {
             }
         }
         .onAppear {
-            print(homeViewIsHidden)
             dataCalculate()
         }
         .onChange(of: homeViewIsHidden) { newValue in
