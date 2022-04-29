@@ -9,22 +9,22 @@ import SwiftUI
 
 struct TermCell: View {
     @Environment(\.managedObjectContext) private var viewContext
-    var term: Term?
-    @FetchRequest var classList: FetchedResults<ClassTaken>
+    @ObservedObject var term: Term
+//    @FetchRequest var classList: FetchedResults<ClassTaken>
     
-    init(term: Term) {
-        self._classList = FetchRequest<ClassTaken>(
-            entity: ClassTaken.entity(),
-            sortDescriptors: [NSSortDescriptor(keyPath: \ClassTaken.name, ascending: true)],
-            predicate: NSPredicate(format: "parentTerm.term == %@", NSNumber(value: term.term))
-        )
-        
-        self.term = term
-    }
+//    init(term: Term) {
+//        self._classList = FetchRequest<ClassTaken>(
+//            entity: ClassTaken.entity(),
+//            sortDescriptors: [NSSortDescriptor(keyPath: \ClassTaken.name, ascending: true)],
+//            predicate: NSPredicate(format: "parentTerm.term == %@", NSNumber(value: term.term))
+//        )
+//
+//        self.term = term
+//    }
     
     var body: some View {
         VStack {
-            Text("Semester \(term?.term ?? 1)")
+            Text("Semester \(term.term)")
                 .font(.title)
                 .fontWeight(.heavy)
                 .padding(.top)
@@ -32,21 +32,21 @@ struct TermCell: View {
             HStack {
                 VStack {
                     Text("Total Credits")
-                    Text("\(term?.totalCredit ?? 0)")
+                    Text("\(term.totalCredit)")
                         .font(.title)
                         .fontWeight(.heavy)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 VStack {
                     Text("GPA")
-                    Text("\((term?.gpa ?? 0.0), specifier: "%.2f")")
+                    Text("\((term.gpa), specifier: "%.2f")")
                         .font(.title)
                         .fontWeight(.heavy)
                 }
                 .frame(maxWidth: .infinity, alignment: .center)
                 VStack {
                     Text("Classes Taken")
-                    Text("\(term?.classTaken ?? 0)")
+                    Text("\(term.classTaken)")
                         .font(.title)
                         .fontWeight(.heavy)
                 }
@@ -57,7 +57,7 @@ struct TermCell: View {
             
             
         }
-        .onAppear(perform: updateTerm)
+//        .onAppear(perform: updateTerm)
         .foregroundColor(Color("YellowLabel"))
         .multilineTextAlignment(.center)
         .overlay(
@@ -66,29 +66,29 @@ struct TermCell: View {
         )
     }
     
-    private func updateTerm() {
-        var totalPoints = 0.0
-        var classTaken = 0
-        var totalCredit = 0
-        
-        for classItem in classList {
-            classTaken += 1
-            totalCredit += Int(classItem.credits)
-            totalPoints += (Double(classItem.credits) * gradeToPoint(classItem.grade ?? "F"))
-        }
-        term?.totalCredit = Int64(totalCredit)
-        term?.classTaken = Int64(classTaken)
-        term?.gpa = totalPoints / Double(term!.totalCredit)
-        
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-    }
+//    private func updateTerm() {
+//        var totalPoints = 0.0
+//        var classTaken = 0
+//        var totalCredit = 0
+//        
+//        for classItem in classList {
+//            classTaken += 1
+//            totalCredit += Int(classItem.credits)
+//            totalPoints += (Double(classItem.credits) * gradeToPoint(classItem.grade ?? "F"))
+//        }
+//        term?.totalCredit = Int64(totalCredit)
+//        term?.classTaken = Int64(classTaken)
+//        let tempGPA = totalPoints / Double(totalCredit)
+//        print("TERM UPDATED! newGPA: \(tempGPA)")
+//        term?.gpa = tempGPA.isNaN ? 0.0 : tempGPA
+//        
+//        do {
+//            try viewContext.save()
+//        } catch {
+//            let nsError = error as NSError
+//            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//        }
+//    }
     
     private func gradeToPoint(_ grade: String) -> Double {
         switch grade {

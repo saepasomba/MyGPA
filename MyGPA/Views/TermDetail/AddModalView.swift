@@ -10,7 +10,7 @@ import SwiftUI
 struct AddModalView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
-    let selectedTerm: Term?
+    @ObservedObject var selectedTerm: Term
     
     @Binding var isPresented: Bool
     
@@ -68,7 +68,6 @@ struct AddModalView: View {
             newClass.grade = gradeInput
             newClass.credits = Int64(creditsInput)!
             newClass.parentTerm = selectedTerm
-            
             do {
                 try viewContext.save()
             } catch {
@@ -80,6 +79,8 @@ struct AddModalView: View {
             
         }
     }
+    
+    
 }
 
 

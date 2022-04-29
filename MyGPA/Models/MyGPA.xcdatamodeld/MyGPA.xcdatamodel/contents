@@ -11,7 +11,7 @@
         <attribute name="gpa" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="term" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="totalCredit" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="classes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ClassTaken" inverseName="parentTerm" inverseEntity="ClassTaken"/>
+        <relationship name="classes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ClassTaken" inverseName="parentTerm" inverseEntity="ClassTaken"/>
     </entity>
     <elements>
         <element name="ClassTaken" positionX="-63" positionY="0" width="128" height="89"/>
