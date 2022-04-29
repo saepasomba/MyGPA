@@ -24,7 +24,7 @@ struct TermCell: View {
     
     var body: some View {
         VStack {
-            Text("Semester \(term.term)")
+            Text("Term \(term.term)")
                 .font(.title)
                 .fontWeight(.heavy)
                 .padding(.top)

@@ -46,7 +46,6 @@ struct HomeView: View {
                 .listStyle(.plain)
                 .safeAreaInset(edge: .top) {
                     SummaryTable(totalCredits: $totalCredits, gpa: $gpa)
-                    //                    SummaryTable(totalCredits: <#T##Binding<Int?>#>, gpa: <#T##Binding<Double?>#>)
                         .shadow(radius: 10)
                         .padding(.vertical, 10)
                         .padding(.horizontal, 50.0)
@@ -57,7 +56,7 @@ struct HomeView: View {
                         Button {
                             popLastSemester()
                         } label: {
-                            Text("Pop last semester")
+                            Text("Pop last term")
                                 .frame(maxWidth: 75)
                         }
                         .foregroundColor(.red)
@@ -69,7 +68,7 @@ struct HomeView: View {
                         Button {
                             addItem()
                         } label: {
-                            Text("Tambah Semester")
+                            Text("Add term")
                                 .frame(maxWidth: 75)
                         }
                         .foregroundColor(.white)
