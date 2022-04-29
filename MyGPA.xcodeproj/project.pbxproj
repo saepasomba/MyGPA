@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		433994EB2813CEE000902233 /* AddModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433994EA2813CEE000902233 /* AddModalView.swift */; };
-		4386F3BE281C15BE00D7D3FC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4386F3BD281C15BD00D7D3FC /* README.md */; };
 		4397DB0E280F2B070019A4BA /* TermDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4397DB0D280F2B070019A4BA /* TermDetailView.swift */; };
 		43C62822280D75E4009D1B2F /* MyGPAApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62821280D75E4009D1B2F /* MyGPAApp.swift */; };
 		43C62824280D75E4009D1B2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C62823280D75E4009D1B2F /* ContentView.swift */; };
@@ -24,7 +23,6 @@
 
 /* Begin PBXFileReference section */
 		433994EA2813CEE000902233 /* AddModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddModalView.swift; sourceTree = "<group>"; };
-		4386F3BD281C15BD00D7D3FC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4397DB0D280F2B070019A4BA /* TermDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDetailView.swift; sourceTree = "<group>"; };
 		43C6281E280D75E4009D1B2F /* MyGPA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyGPA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43C62821280D75E4009D1B2F /* MyGPAApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGPAApp.swift; sourceTree = "<group>"; };
@@ -81,7 +79,6 @@
 		43C62815280D75E4009D1B2F = {
 			isa = PBXGroup;
 			children = (
-				4386F3BD281C15BD00D7D3FC /* README.md */,
 				43C62820280D75E4009D1B2F /* MyGPA */,
 				43C6281F280D75E4009D1B2F /* Products */,
 			);
@@ -184,7 +181,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4386F3BE281C15BE00D7D3FC /* README.md in Resources */,
 				43C62829280D75E6009D1B2F /* Preview Assets.xcassets in Resources */,
 				43C62826280D75E6009D1B2F /* Assets.xcassets in Resources */,
 			);

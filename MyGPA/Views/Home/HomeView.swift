@@ -68,7 +68,7 @@ struct HomeView: View {
                         Button {
                             addItem()
                         } label: {
-                            Text("Add term")
+                            Text("Add new term")
                                 .frame(maxWidth: 75)
                         }
                         .foregroundColor(.white)
