@@ -69,6 +69,7 @@ struct AddModalView: View {
                 newClass.grade = gradeInput
                 newClass.credits = Int64(creditsInput)!
                 newClass.parentTerm = selectedTerm
+                selectedTerm.classTaken += 1
                 do {
                     try viewContext.save()
                 } catch {

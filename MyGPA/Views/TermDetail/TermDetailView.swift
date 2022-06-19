@@ -91,6 +91,7 @@ struct TermDetailView: View {
                 let classTarget = classList[index]
                 viewContext.delete(classTarget)
             }
+            self.selectedTerm.classTaken -= 1
             do {
                 try viewContext.save()
             } catch {

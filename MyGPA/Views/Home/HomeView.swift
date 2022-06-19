@@ -18,6 +18,7 @@ struct HomeView: View {
     @State var totalCredits: Int?
     @State var gpa: Double?
     @State var homeViewIsHidden: Bool? = false
+    @State var classTaken: Int?
     
     
     var body: some View {
@@ -136,12 +137,13 @@ struct HomeView: View {
         withAnimation {
             var totalCredits = 0
             var totalPoints = 0.0
+            let totalClassTaken = classList.count
             
             for classTaken in classList {
                 totalCredits += Int(classTaken.credits)
                 totalPoints += (Double(classTaken.credits) * gradeToPoint(classTaken.grade ?? "F"))
             }
-            
+            self.classTaken = totalClassTaken
             self.totalCredits = totalCredits
             let tempGPA = totalPoints / Double(totalCredits)
             self.gpa = tempGPA.isNaN ? 0.0 : tempGPA
